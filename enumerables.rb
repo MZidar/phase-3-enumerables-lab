@@ -12,13 +12,14 @@ end
 # given an array of spicy foods, **return an array of strings**
 # with the names of each spicy food
 def get_names(spicy_foods)
-  # your code here
+  spicy_names = spicy_foods.map{|h| h[:name]}
+
 end
 
 # given an array of spicy foods, **return an array of hashes** 
 # where the heat level of the food is greater than 5
 def spiciest_foods(spicy_foods)
-  # your code here
+  high_heat = spicy_foods.filter{|h| h[:heat_level] > 5}
 end
 
 # given an array of spicy foods, **output to the terminal**
@@ -27,19 +28,20 @@ end
 # HINT: you can use * with a string to produce the correct number of 🌶 emoji. 
 # "hello" * 3 == "hellohellohello"
 def print_spicy_foods(spicy_foods)
-  # your code here
+  spicy_foods.each{|h| puts "#{h[:name]} (#{h[:cuisine]}) | Heat Level: " + "🌶"*h[:heat_level]}
 end
 
 # given an array of spicy foods and a string representing a cuisine, **return a single hash**  
 # for the spicy food whose cuisine matches the cuisine being passed to the method
 def get_spicy_food_by_cuisine(spicy_foods, cuisine)
-  # your code here
+  spicy_array = spicy_foods.find{|h| h[:cuisine] == cuisine}
+  return spicy_array
 end
 
 # Given an array of spicy foods, **return an array of hashes** 
 # sorted by heat level from lowest to highest
 def sort_by_heat(spicy_foods)
-  # your code here
+  spicy_foods.sort{|food1, food2| food1[:heat_level] <=> food2[:heat_level]}
 end
 
 # given an array of spicy foods, output to the terminal ONLY 
@@ -47,11 +49,20 @@ end
 # Buffalo Wings (American) | Heat Level: 🌶🌶🌶
 # HINT: Try to use methods you've already written to solve this!
 def print_spiciest_foods(spicy_foods)
-  # your code here
+  to_print = spiciest_foods(spicy_foods)
+  print_spicy_foods(to_print)
 end
 
 # given an array of spicy foods, return an integer representing 
 # the average heat level of all the spicy foods in the array
 def average_heat_level(spicy_foods)
-  # your code here
+  num_array = spicy_foods.map{|h| h[:heat_level]}
+  i = 0
+  number = 0
+  until i == num_array.length
+    number += num_array[i]
+    i += 1
+  end
+  return number/3
 end
+
